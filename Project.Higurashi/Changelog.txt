@@ -1,0 +1,6 @@
+# v3.0.3.0 - [2023.12.2]
+- Added Malicious > Crash > Fujita Nihil
+- Improved Self > Health > God Mode
+- Improved Friendly > Steal Outfit
+- Fixed hint typo
+- Fixed minor bug
