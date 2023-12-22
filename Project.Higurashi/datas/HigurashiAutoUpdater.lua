@@ -6,7 +6,6 @@ local datas_path = higurashi_path .. "\\datas"
 local file_paths = {
     main = appdata_path .. "\\scripts\\ProjectHigurashi.lua",
     essential = datas_path .. "\\Higurashi.lua",
-    discordhandler = datas_path .. "\\HigurashiDiscordHandler.lua",
     natives = datas_path .. "\\HigurashiNatives.lua",
     globals = datas_path .. "\\HigurashiGlobals.lua",
     vehs = datas_path .. "\\HigurashiGiftVehicle.lua",
@@ -17,8 +16,6 @@ local file_paths = {
 local files = {
     main = [[https://raw.githubusercontent.com/ImHigurashi/-/main/ProjectHigurashi.lua]],
     essential = [[https://raw.githubusercontent.com/ImHigurashi/-/main/Project.Higurashi/datas/Higurashi.lua]],
-    discordhandler =
-    [[https://raw.githubusercontent.com/ImHigurashi/-/main/Project.Higurashi/datas/HigurashiDiscordHandler.lua]],
     natives = [[https://raw.githubusercontent.com/ImHigurashi/-/main/Project.Higurashi/datas/HigurashiNatives.lua]],
     globals = [[https://raw.githubusercontent.com/ImHigurashi/-/main/Project.Higurashi/datas/HigurashiGlobals.lua]],
     vehs = [[https://raw.githubusercontent.com/ImHigurashi/-/main/Project.Higurashi/datas/HigurashiGiftVehicle.lua]],
