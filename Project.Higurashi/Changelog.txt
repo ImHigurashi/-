@@ -1,4 +1,4 @@
-# v3.0.3.5 - [2023.12.24]
+# v3.0.3.6 - [2023.12.24]
 - added Player Utilities>Send Friend Request
 - added Player Utilities>Open SC Profile
 - added Player Utilities>Check Region
@@ -6,4 +6,6 @@
 - added Grieging>Send Attackers>Gooch
 - added Grieging>Send Attackers>Yeti
 - improved Grieging>Make Nearby Peds Hostile
+- removed Player>Malicious>Crash>Quantum
 - reworked Player Utilities>Send Text Message(SMS)
+- Fixed some bugs
