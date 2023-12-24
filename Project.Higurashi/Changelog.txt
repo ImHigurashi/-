@@ -1,2 +1,9 @@
-# v3.0.3.0 - [2023.11.26]
-- improved trashes
+# v3.0.3.5 - [2023.12.24]
+- added Player Utilities>Send Friend Request
+- added Player Utilities>Open SC Profile
+- added Player Utilities>Check Region
+- added Session Malicious>Region Kick
+- added Grieging>Send Attackers>Gooch
+- added Grieging>Send Attackers>Yeti
+- improved Grieging>Make Nearby Peds Hostile
+- reworked Player Utilities>Send Text Message(SMS)
