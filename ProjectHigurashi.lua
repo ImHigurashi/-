@@ -7257,13 +7257,13 @@ function MainScript()
 
     m.af("Teleport All Objects To Me", "action", Higurashi.WorldObject.id, function()
         for _, objs in pairs(object.get_all_objects()) do
-            higurashi.entity_teleport(objs, higurashi.get_most_accurate_position(higurashi.get_vector_relative_to_entity(NATIVE.PLAYER_PED_ID(), 12)))
+            higurashi.entity_teleport(objs, higurashi.get_most_accurate_position(higurashi.get_vector_relative_to_entity(NATIVE.PLAYER_PED_ID())))
         end
     end)
 
     m.af("Teleport All Pickups To Me", "action", Higurashi.WorldObject.id, function()
         for _, objs in pairs(object.get_all_pickups()) do
-            higurashi.entity_teleport(objs, higurashi.get_most_accurate_position(higurashi.get_vector_relative_to_entity(NATIVE.PLAYER_PED_ID(), 0)))
+            higurashi.entity_teleport(objs, higurashi.get_most_accurate_position(higurashi.get_vector_relative_to_entity(NATIVE.PLAYER_PED_ID())))
         end
     end)
 
@@ -7293,7 +7293,7 @@ function MainScript()
         local all_vehs = vehicle.get_all_vehicles()
         for i = 1, #all_vehs do
             if not NATIVE.IS_PED_A_PLAYER(NATIVE.GET_PED_IN_VEHICLE_SEAT(all_vehs[i], -1, false)) and not NATIVE.DECOR_EXIST_ON(all_vehs[i], "Player_Vehicle") and not NATIVE.DECOR_EXIST_ON(all_vehs[i], "CreatedByPegasus") and higurashi.request_control_of_entity(all_vehs[i]) then
-                higurashi.entity_teleport(all_vehs[i], higurashi.get_most_accurate_position(higurashi.get_vector_relative_to_entity(NATIVE.PLAYER_PED_ID(), 12)))
+                higurashi.entity_teleport(all_vehs[i], higurashi.get_most_accurate_position(higurashi.get_vector_relative_to_entity(NATIVE.PLAYER_PED_ID())))
             end
         end
     end)
@@ -9809,7 +9809,26 @@ function MainScript()
             end
             return HANDLER_CONTINUE
         end)
+        function higurashi.exterminate_attacking_players()
+            local player_ped = NATIVE.PLAYER_PED_ID()
+            local player_pos = NATIVE.GET_ENTITY_COORDS(player_ped, true)
 
+            for pid in higurashi.players() do
+                local attacker_ped = NATIVE.GET_PLAYER_PED_SCRIPT_INDEX(pid)
+                if NATIVE.DOES_ENTITY_EXIST(attacker_ped) and attacker_ped ~= player_ped then
+                    if NATIVE.IS_PED_IN_MELEE_COMBAT(attacker_ped) and NATIVE.GET_MELEE_TARGET_FOR_PED(attacker_ped) == player_ped then
+                        higurashi.shoot_bullet(higurashi.get_player_bone_coords(pid, 11816), higurashi.get_player_bone_coords(pid, 39317), 1, true, joaat("WEAPON_SNOWLAUNCHER"), higurashi.get_random_ped() or -1, true, false, 10000.0)
+                    end
+                end
+            end
+        end
+
+        m.af("Exterminate Attacking Players", "toggle", Higurashi.DeveloperFeatures2.id, function(f)
+            while f.on do
+                higurashi.exterminate_attacking_players()
+                wait(500)
+            end
+        end)
         m.af("Voice Chat Detection", "toggle", Higurashi.DeveloperFeatures2.id, function(f)
             while f.on do
                 wait(0)
