@@ -32,6 +32,21 @@ function call_taxi(pid)
     end
 end
 
+local weather_types = {"CLEAR", "EXTRASUNNY", "CLOUDS", "SMOG", "FOGGY", "OVERCAST", "RAIN", "THUNDER", "SNOW"}
+local current_weather_index = 1
+
+function change_weather()
+    current_weather_index = current_weather_index + 1
+    if current_weather_index > #weather_types then
+        current_weather_index = 1
+    end
+    NATIVE.SET_WEATHER_TYPE_NOW_PERSIST(weather_types[current_weather_index])
+end
+
+m.add_hotkey("Change Weather", "key", "K", function()
+    change_weather()
+end)
+
 menu.add_feature("Call Taxi to Player", "action", 0, function(f)
     local selected_pid = call_taxi(selected_pid)
 end)
